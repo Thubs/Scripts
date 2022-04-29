@@ -29,11 +29,13 @@ const getlocation = async(ip) =>{
     response.json().then((json) => {
 
         const output = `
+        .
 
         You're from ${json.country_name}, ${json.state_prov}, ${json.city}, ${json.district}
         Your longitude and latitude is (${json.latitude} , ${json.longitude})
         And your internet survice provider is ${json.isp}
         
+        Right?
         `;
     
     console.log(output);
