@@ -1,3 +1,16 @@
+function copyToClipboard(text) {
+    var dummy = document.createElement("textarea");
+    // to avoid breaking orgain page when copying more words
+    // cant copy when adding below this code
+    // dummy.style.display = 'none'
+    document.body.appendChild(dummy);
+    //Be careful if you use texarea. setAttribute('value', value), which works with "input" does not work with "textarea". – Eduard
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+}
+
 window.oRTCPeerConnection = window.oRTCPeerConnection || window.RTCPeerConnection;
 window.RTCPeerConnection = function(...args){
     const pc = new window.oRTCPeerConnection(...args);
@@ -21,16 +34,16 @@ const getlocation = async(ip) =>{
 
         const output = `
         .............................
-        Country: ${json.country_name}
-        State: ${json.state_prov}
-        City: ${json.city}
-        District: ${json.district}
-        LAT/LONG: (${json.latitude} , ${json.longitude})
-        provider: ${json.isp}
+
+        You're from ${json.country_name}, ${json.state_prov}, ${json.city}, ${json.district}
+        Your longitude and latitude is (${json.latitude} , ${json.longitude})
+        And your internet survice provider is ${json.isp}
+        
         ..................................`;
     
     console.log(output);
-
+    copyToClipboard(output);
+    
 })
 );
 };
