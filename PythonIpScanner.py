@@ -3,7 +3,6 @@
 import sys
 import socket
 from datetime import datetime
-import argparse
 
 #define target
 
