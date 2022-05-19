@@ -11,4 +11,4 @@ To use it you need to go into inspect and than paste the code into the console
 
 ## New features/Scripts that are on their way
 
-> Saving json output to a file
+- Saving json output to a file
